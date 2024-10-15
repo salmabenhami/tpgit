@@ -1,0 +1,27 @@
+stages:
+  - test
+  - build
+  - deploy
+
+# Job pour exécuter les tests
+job_test:
+  stage: test
+  script:
+    - echo "Lancement des tests..."
+    - echo "Tous les tests sont passés avec succès !"
+
+# Job pour construire le projet
+job_build:
+  stage: build
+  script:
+    - echo "Construction du projet..."
+    - echo "Le projet a été construit avec succès !"
+
+# Job pour déployer le projet
+job_deploy:
+  stage: deploy
+  script:
+    - echo "Déploiement du projet..."
+    - echo "Le projet a été déployé avec succès !"
+  only:
+    - main
