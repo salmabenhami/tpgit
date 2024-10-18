@@ -1,0 +1,26 @@
+name: Simple JavaScript Test
+
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Run JavaScript function test
+        run: |
+          echo "function checkValue(a) { if (a == 0) { return false; } else { return true; } }" > test.js
+          echo "console.log(checkValu(0));" >> test.js  # Erreur: mauvaise fonction (checkValu au lieu de checkValue)
+          echo "console.log(checkValue(5));" >> test.js
+          node test.js
